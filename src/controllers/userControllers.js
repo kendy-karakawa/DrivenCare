@@ -11,7 +11,20 @@ async function signup(req, res){
     }
 }
 
+async function signin (req, res){
+    const {email, password} = req.body
+
+    try {
+        const token = await userServices.signin({email, password})
+        res.send({token})
+        
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+}
+
 
 export default {
-    signup
+    signup,
+    signin
 }

@@ -14,6 +14,20 @@ async function signup ({ name, email, password, location, is_doctor, specialty }
     if (is_doctor === true) await userRepositories.createSpecialty({userId, specialty}); 
 }
 
+async function signin({email, password}){
+    const {rowCount, rows: [user]} = await userRepositories.findByEmail(email)
+    if (!rowCount) throw new Error("E-mail or password incorrect")
+
+    const validPassword = bcrypt.compare(password, user.password)  
+    if(!validPassword) throw new Error("E-mail or password incorrect")
+
+    const token = uuid()
+    await userRepositories.createSession({token, userId: user.id})
+
+    return token
+}
+
 export default{
-    signup
+    signup,
+    signin
 }

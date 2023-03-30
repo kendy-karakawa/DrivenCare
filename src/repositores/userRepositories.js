@@ -15,15 +15,21 @@ async function create ({ name, email, password,location, is_doctor}){
 }
 
 async function createSpecialty ({userId, specialty}){
-    console.log("entreis")
     await connectionDb.query(`
     INSERT INTO specialties (user_id, specialty)
     VALUES ($1, $2)`, [userId, specialty])
     
 }
 
+async function createSession({token, userId}){
+    await connectionDb.query(`
+    INSERT INTO sessions (token, user_id)
+    VALUES ($1, $2)`, [token, userId])
+}
+
 export default {
     findByEmail,
     create,
-    createSpecialty
+    createSpecialty,
+    createSession
 }
