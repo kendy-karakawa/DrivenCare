@@ -27,7 +27,14 @@ async function searchUnavaliableTime({id}){
     `, [id])
 }
 
+async function findById({doctorId}){
+    return await connectionDb.query(`
+    SELECT * FROM users WHERE is_doctor = true AND id = $1
+    `, [doctorId])
+}
+
 export default {
     serchDoctor,
-    searchUnavaliableTime
+    searchUnavaliableTime,
+    findById
 }
