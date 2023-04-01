@@ -3,13 +3,16 @@ import doctorRepositories from '../repositores/doctorRepositories.js';
 
 async function serchDoctor({name, location, specialty}){
 
-    //if (!name && !location && !specialty) throw error.invalidCredentials()
-   
- 
     const result = await doctorRepositories.serchDoctor({name, location, specialty})
     return result.rows
  }
 
+ async function searchUnavaliableTime ({id}){
+   const result = await doctorRepositories.searchUnavaliableTime({id})
+   return result.rows
+ }
+
  export default {
-    serchDoctor
+    serchDoctor,
+    searchUnavaliableTime
  }

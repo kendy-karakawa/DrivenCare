@@ -1,7 +1,7 @@
 import doctorServices from "../services/doctorServices.js"
 
 
-async function serchDoctor (req, res, next){
+async function searchDoctor (req, res, next){
     const {name, location, specialty} = req.query
 
     try {
@@ -16,6 +16,19 @@ async function serchDoctor (req, res, next){
 
 }
 
+async function searchUnavaliableTime (req, res, next){
+    const {id} = req.params
+
+    try {
+        const unvaliableTimes = await doctorServices.searchUnavaliableTime({id})
+
+        res.send({unvaliableTimes})
+    } catch (error) {
+        next(err)
+    }
+}
+
 export default {
-    serchDoctor
+    searchDoctor,
+    searchUnavaliableTime
 }

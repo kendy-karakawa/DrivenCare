@@ -21,6 +21,13 @@ async function serchDoctor ({name, location, specialty}){
     `, [name, location, specialty])
 }
 
+async function searchUnavaliableTime({id}){
+    return await connectionDb.query(`
+    SELECT weekday, time FROM schedules WHERE doctor_id = $1
+    `, [id])
+}
+
 export default {
-    serchDoctor
+    serchDoctor,
+    searchUnavaliableTime
 }

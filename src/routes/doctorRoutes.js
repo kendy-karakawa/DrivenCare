@@ -4,7 +4,7 @@ import authValidation from "../middlewares/authMiddleware.js";
 
 const doctorRoutes = Router()
 
-doctorRoutes.get("/serch", authValidation, doctorControllers.serchDoctor)
-
+doctorRoutes.get("/search", authValidation, doctorControllers.searchDoctor)
+doctorRoutes.get("/time/:id", authValidation, doctorControllers.searchUnavaliableTime)
 
 export default doctorRoutes
