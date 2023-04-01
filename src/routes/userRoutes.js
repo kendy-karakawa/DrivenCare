@@ -8,4 +8,5 @@ const userRoutes = Router()
 userRoutes.post("/signup",validateSchema(userSchemas), userControllers.signup)
 userRoutes.post("/signin", userControllers.signin)
 
+
 export default userRoutes

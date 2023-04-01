@@ -8,6 +8,13 @@ async function findByEmail(email) {
     );
   }
 
+  async function  findById(id){
+    return await connectionDb.query(
+        `SELECT * FROM users WHERE id = $1`,
+        [id]
+    )
+  }
+
 async function create ({ name, email, password,location, is_doctor}){
     return await connectionDb.query(`
     INSERT INTO users (name, email, password, location, is_doctor) 
@@ -15,6 +22,7 @@ async function create ({ name, email, password,location, is_doctor}){
 }
 
 async function createSpecialty ({userId, specialty}){
+    console.log("entrei")
     await connectionDb.query(`
     INSERT INTO specialties (user_id, specialty)
     VALUES ($1, $2)`, [userId, specialty])
@@ -27,9 +35,13 @@ async function createSession({token, userId}){
     VALUES ($1, $2)`, [token, userId])
 }
 
+
+
 export default {
     findByEmail,
     create,
     createSpecialty,
-    createSession
+    createSession,
+    findById,
+    
 }

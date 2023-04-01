@@ -24,7 +24,10 @@ async function signin (req, res, next){
 }
 
 
+
+
 export default {
     signup,
-    signin
+    signin,
+   
 }

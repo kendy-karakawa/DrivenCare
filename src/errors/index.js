@@ -32,6 +32,13 @@ function conflict(message) {
       message: "Email or password are incorrect",
     };
   }
+
+  function invalidInformations(){
+    return {
+      name: "InvalidInformations",
+      message: "invalid search information"
+    }
+  }
   
   export default {
     conflict,
@@ -39,5 +46,7 @@ function conflict(message) {
     unauthorized,
     notFound,
     invalidCredentials,
+    invalidInformations
+    
   };
   
