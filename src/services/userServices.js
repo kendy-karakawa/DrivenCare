@@ -16,7 +16,7 @@ async function signup ({ name, email, password, location, is_doctor, specialty }
     
     const userId = user.rows[0].id
 
-    console.log(userId, is_doctor)
+   
     if (is_doctor == "true") await userRepositories.createSpecialty({userId, specialty}); 
 }
 

@@ -7,8 +7,7 @@ async function createReserve({doctorId, weekday, time, userId}){
     const {rowCount} = await doctorRepositories.findById({doctorId})
    
     if (!rowCount) throw errors.notFound()
-    
-    
+
     await scheduleRepositories.createReserve({doctorId, weekday, time, userId})
     
 }
@@ -19,7 +18,7 @@ async function confirmReserve({id}){
 }
 
 async function cancelReserve({id}){
-    const {rowCount} = await scheduleRepositories.cancelReserve({id})
+    const { rowCount } = await scheduleRepositories.cancelReserve({id})
     if (!rowCount) throw errors.notFound()
 }
 

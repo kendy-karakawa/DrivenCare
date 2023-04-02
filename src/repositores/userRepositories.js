@@ -22,7 +22,6 @@ async function create ({ name, email, password,location, is_doctor}){
 }
 
 async function createSpecialty ({userId, specialty}){
-    console.log("entrei")
     await connectionDb.query(`
     INSERT INTO specialties (user_id, specialty)
     VALUES ($1, $2)`, [userId, specialty])
